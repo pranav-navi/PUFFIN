@@ -70,13 +70,82 @@
         }
 
     </style>
+
+    <style>
+        /* Day/Night Toggle Button */
+        .toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ffffff33;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            font-weight: bold;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .toggle-container:hover {
+            transform: scale(1.05);
+        }
+
+        /* Foodie Background */
+        body.food-bg {
+            background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background 0.4s ease;
+        }
+
+        /* Night Mode */
+        body.night {
+            background: #0a0a14;
+            color: #ffffff;
+        }
+
+        body.night .landing {
+            background: linear-gradient(135deg, #1e1e2f, #0a0a14);
+        }
+
+        .icon-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .icon-row img {
+            width: 90px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+            transition: 0.3s;
+        }
+
+        .icon-row img:hover {
+            transform: scale(1.15);
+        }
+
+    </style>
 </head>
 
 <body>
 
-    <section class="landing">
+    <div class="toggle-container" onclick="toggleMode()">Toggle Day/Night</div>
+
+    <section class="landing food-landing">
         <h1>Welcome to Puffin 🍽️</h1>
         <p>Your smart, AI-powered food recommendation assistant. Ask Puffin what to eat based on your taste, mood, diet, or cravings!</p>
+    
+
+        <div class="icon-row">
+            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" alt="Burger Icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Pizza Icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/859/859270.png" alt="Noodles Icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/3480/3480667.png" alt="Dessert Icon">
+        </div>
+
     </section>
 
     <!-- Floating Puffin Icon Button -->
@@ -104,5 +173,12 @@
         }
     </script>
 
+
+<script>
+    function toggleMode() {
+        document.body.classList.toggle('night');
+        document.body.classList.toggle('food-bg');
+    }
+</script>
 </body>
 </html>
