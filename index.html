@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puffin Chatbot</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0e0f1a;
+            color: #ffffff;
+        }
+
+        /* Landing Section */
+        .landing {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #4e73df, #2e2f50);
+            padding: 20px;
+        }
+
+        .landing h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .landing p {
+            font-size: 20px;
+            max-width: 600px;
+        }
+
+        /* Floating Puffin Logo Button */
+        .puffin-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .puffin-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .puffin-btn img {
+            width: 45px;
+            height: 45px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #191a2d;
+            color: #bbbbbb;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <section class="landing">
+        <h1>Welcome to Puffin 🍽️</h1>
+        <p>Your smart, AI-powered food recommendation assistant. Ask Puffin what to eat based on your taste, mood, diet, or cravings!</p>
+    </section>
+
+    <!-- Floating Puffin Icon Button -->
+    <div class="puffin-btn" onclick="openChat()">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Puffin Logo">
+    </div>
+
+    <footer>
+        Puffin © 2025 • Smart Food Recommendation Chatbot
+    </footer>
+
+    <script>
+        function openChat() {
+            window.watsonAssistantChatOptions = {
+              integrationID: "1f4b1bb4-a085-404c-b8c4-ef5e4d0e8be7",
+              region: "au-syd",
+              serviceInstanceID: "54e3d784-fef4-4620-ab4c-dba80af4fac2",
+              onLoad: async (instance) => { await instance.render(); }
+            };
+            setTimeout(function(){
+              const t=document.createElement('script');
+              t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+              document.head.appendChild(t);
+            });
+        }
+    </script>
+
+</body>
+</html>
